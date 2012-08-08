@@ -1,4 +1,8 @@
 rssd
 ====
 
-rss deamon
+rss deamon on python
+
+
+#dependecy
+sqlalchemy
