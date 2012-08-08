@@ -33,6 +33,7 @@ class Db():
         f.parse_info()
         print f.info
         self.__session.add(f)
+        self.commit()
 
     def get_feeds(self):
         return self.__session.query(feed.Feed).all()
