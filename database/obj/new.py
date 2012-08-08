@@ -12,6 +12,7 @@ class New(Base):
     id_news = Column(Integer,primary_key=True)
     author = Column(String)
     title = Column(String)
+    link = Column(String)
     content = Column(String)
     insert_date = Column(DateTime)
     id_feeds = Column(Integer, ForeignKey('feeds.id_feeds'))
@@ -24,5 +25,6 @@ class New(Base):
         self.author = data['author']
         self.title = data['title']
         self.content = data['content'][0]['value']
+        self.link = data['links'][0]['href']
 
 
