@@ -1,7 +1,6 @@
-from database.db import Db
+from rssd import Rssd
 
 if __name__ == '__main__':
-    db = Db()
-    db.add_feed('http://archlinux.fr/feed')
-    db.update_news()
+    deamon = Rssd()
+    deamon.update()
 #    db.add_feed('http://feeds.feedburner.com/bashfr')

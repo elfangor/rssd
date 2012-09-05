@@ -1,6 +1,7 @@
 import feedparser
 from time import mktime
 from datetime import datetime
+import logging
 
 from sqlalchemy import Column, Integer, String, DateTime
 from sqlalchemy.orm import relationship, backref
@@ -19,8 +20,13 @@ class Feed(Base):
     updated = Column(DateTime)
     insert_date = Column(DateTime)
 
+    FORMAT = '%(levelname)s - %(asctime)-15s %(message)s'
+    logging.basicConfig(format=FORMAT)
+    logger = logging.getLogger('feed')
+
     def __init__(self,url=None):
         if not url.startswith('http'):
+            self.logger.warning('URL not starting with http adding it')
             url = 'http://' + url
         self.url = url
         self.insert_date = datetime.today()

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship, backref
 
@@ -13,6 +13,7 @@ class New(Base):
     author = Column(String)
     title = Column(String)
     link = Column(String)
+    is_read = Column(Boolean)
     content = Column(String)
     insert_date = Column(DateTime)
     id_feeds = Column(Integer, ForeignKey('feeds.id_feeds'))
