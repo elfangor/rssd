@@ -7,4 +7,6 @@ class Protocol(LineReceiver):
         self.deamon = deamon
 
     def lineReceived(self, line):
-        print line
+        if line == "update":
+            print "update"
+            self.deamon.update()
