@@ -10,8 +10,8 @@ class EchoClient(LineReceiver):
     def connectionMade(self):
         self.sendLine("blabla")
         self.authen()
-#    db.add_feed('http://feeds.feedburner.com/bashfr')
-        self.sendLine(pickle.dumps({"cmd":"add_feed","param":{"feed":'http://feeds.feedburner.com/bashfr'}}))
+        self.sendLine(pickle.dumps({"cmd":"get_feeds"}))
+#        self.sendLine(pickle.dumps({"cmd":"add_feed","param":{"feed":'http://feeds.feedburner.com/bashfr'}}))
 #        self.sendLine(pickle.dumps({"cmd":"update"}))
 
 

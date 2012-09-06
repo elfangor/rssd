@@ -17,9 +17,12 @@ class Protocol(LineReceiver):
             else:
                 func=getattr(self.deamon,data["cmd"]) 
                 if "param" in data:
-                   func(data["param"])
+                   ret = func(data["param"])
                 else:
-                    func() 
+                   ret = func() 
+                print ret
+                if ret:
+                    self.sendLine(pickle.dumps(ret))
         except Exception, e:
             print e
 

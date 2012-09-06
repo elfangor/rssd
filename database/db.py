@@ -31,7 +31,6 @@ class Db():
     def add_feed(self, url):
         f = feed.Feed(url)
         f.parse_info()
-        print f.info
         self.__session.add(f)
         self.commit()
 

@@ -14,5 +14,11 @@ class Rssd():
         self.db.update_news()
 
     def add_feed(self,param):
-        print param
         self.db.add_feed(param['feed'])
+
+    def get_feeds(self):
+        feeds=list()
+        for f in self.db.get_feeds():
+            feeds.append(f.get_info())
+        return feeds
+            

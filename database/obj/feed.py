@@ -48,3 +48,6 @@ class Feed(Base):
         self.subtitle = self.info['subtitle']
         self.title = self.info['title']
         self.updated = datetime.fromtimestamp(mktime(self.info['updated_parsed']))
+
+    def get_info(self):
+        return {"id_feed":self.id_feeds,"link": self.link,"subtitle":self.subtitle,"title":self.title,"update":self.updated}
