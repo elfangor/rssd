@@ -13,3 +13,6 @@ class Rssd():
     def update(self):
         self.db.update_news()
 
+    def add_feed(self,param):
+        print param
+        self.db.add_feed(param['feed'])

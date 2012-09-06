@@ -4,6 +4,14 @@ rssd
 rss deamon on python
 
 
-#dependecy
-sqlalchemy\n
-soon will depend to twisted to managed the network part
+dependecy
+====
+    -sqlalchemy
+    -twisted
+
+how to test it
+====
+//start the deamon
+python main.py
+//connect test client to deamon to update feed
+python test_cli.py

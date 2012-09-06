@@ -17,7 +17,7 @@ class Protocol(LineReceiver):
             else:
                 func=getattr(self.deamon,data["cmd"]) 
                 if "param" in data:
-                   func(data["cmd"])
+                   func(data["param"])
                 else:
                     func() 
         except Exception, e:
