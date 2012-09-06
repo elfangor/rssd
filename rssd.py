@@ -12,3 +12,4 @@ class Rssd():
 
     def update(self):
         self.db.update_news()
+
