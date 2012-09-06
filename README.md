@@ -5,5 +5,5 @@ rss deamon on python
 
 
 #dependecy
-sqlalchemy
+sqlalchemy\n
 soon will depend to twisted to managed the network part
