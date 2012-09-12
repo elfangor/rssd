@@ -1,4 +1,4 @@
-import pickle
+import json
 
 from twisted.internet import reactor, protocol
 import time
@@ -10,9 +10,10 @@ class EchoClient(LineReceiver):
     def connectionMade(self):
         self.sendLine("blabla")
         self.authen()
-        self.sendLine(pickle.dumps({"cmd":"get_feeds"}))
-#        self.sendLine(pickle.dumps({"cmd":"add_feed","param":{"feed":'http://feeds.feedburner.com/bashfr'}}))
-#        self.sendLine(pickle.dumps({"cmd":"update"}))
+#        self.sendLine(json.dumps({"cmd":"get_feeds"}))
+        self.sendLine(json.dumps({"cmd":"add_feed","param":{"feed":'http://archlinux.fr/feed'}}))
+        self.sendLine(json.dumps({"cmd":"update"}))
+#        self.sendLine(json.dumps({"cmd":"update"}))
 
 
 #        self.sendLine("hej")
@@ -25,7 +26,7 @@ class EchoClient(LineReceiver):
         print line
 
     def authen(self):
-        self.sendLine(pickle.dumps({"cmd":"login","param":{"login":"test","pass":"ok"}}))
+        self.sendLine(json.dumps({"cmd":"login","param":{"login":"test","pass":"ok"}}))
 
 class EchoFactory(protocol.ClientFactory):
     protocol = EchoClient

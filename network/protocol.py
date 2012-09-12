@@ -1,4 +1,4 @@
-import pickle
+import json
 
 from twisted.protocols.basic import LineReceiver
 from twisted.internet import reactor
@@ -10,7 +10,7 @@ class Protocol(LineReceiver):
 
     def lineReceived(self, line):
         try:
-            data=pickle.loads(line)
+            data=json.loads(line)
             if data["cmd"]=="login":
                 self.login(data["param"])
                 self.sendLine("Auth status:"+str(self.auth))
@@ -22,7 +22,7 @@ class Protocol(LineReceiver):
                    ret = func() 
                 print ret
                 if ret:
-                    self.sendLine(pickle.dumps(ret))
+                    self.sendLine(json.dumps(ret))
         except Exception, e:
             print e
 

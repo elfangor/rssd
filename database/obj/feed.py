@@ -38,6 +38,7 @@ class Feed(Base):
         self.info=self.data.feed
 
     def load_news(self,session):
+        print "STARTING LOAD NEWS"
         n=[]
         for item in self.data['entries']:
            n.append(New(self.id_feeds,item))

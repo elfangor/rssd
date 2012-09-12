@@ -45,6 +45,5 @@ class Db():
         #Create new session,because maybe we will be multi thread
         s=self.Session()
         feed.load_info()
-        print feed.data
         feed.load_news(s)
         s.commit()
