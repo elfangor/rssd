@@ -6,13 +6,11 @@ import os.path
 from twisted.protocols.basic import LineReceiver
 
 class EchoClient(LineReceiver):
+    MAX_LENGTH=99999999
 
     def connectionMade(self):
-        self.sendLine("blabla")
         self.authen()
-#        self.sendLine(json.dumps({"cmd":"get_feeds"}))
-        self.sendLine(json.dumps({"cmd":"add_feed","param":{"feed":'http://archlinux.fr/feed'}}))
-        self.sendLine(json.dumps({"cmd":"update"}))
+        self.sendLine(json.dumps({"cmd":"get_news","param":{"feed":1}}))
 #        self.sendLine(json.dumps({"cmd":"update"}))
 
 
@@ -23,6 +21,7 @@ class EchoClient(LineReceiver):
         print "connection lost"
 
     def lineReceived(self, line):
+        print "transaction incomming"
         print line
 
     def authen(self):

@@ -50,5 +50,8 @@ class Feed(Base):
         self.title = self.info['title']
         self.updated = datetime.fromtimestamp(mktime(self.info['updated_parsed']))
 
-    def get_info(self):
-        return {"id_feed":self.id_feeds,"link": self.link,"subtitle":self.subtitle,"title":self.title,"update":self.updated}
+    def get_info(self,json=True):
+        if json:
+            return {"id_feed":self.id_feeds,"link": self.link,"subtitle":self.subtitle,"title":self.title,"update":str(self.updated)}
+        else:
+            return {"id_feed":self.id_feeds,"link": self.link,"subtitle":self.subtitle,"title":self.title,"update":self.updated}

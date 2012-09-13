@@ -20,9 +20,12 @@ class Protocol(LineReceiver):
                    ret = func(data["param"])
                 else:
                    ret = func() 
-                print ret
-                if ret:
-                    self.sendLine(json.dumps(ret))
+                try:
+                    for i in ret:
+                        self.sendLine(json.dumps(i))
+                except TypeError, te:
+                    if ret:
+                        self.sendLine(json.dumps(ret))
         except Exception, e:
             print e
 

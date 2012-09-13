@@ -58,4 +58,8 @@ class New(Base):
             self.logger.warning('No link setting to none')
             self.link = None
 
-
+    def get_info(self,json=True):
+        if json:
+            return {"id_feed":self.id_feeds,"id_new":self.id_news,"link": self.link,"title":self.title,"insert_date":str(self.insert_date),"is_read":self.is_read,"content":self.content,"author":self.author,"gid":self.gid}
+        else:
+            return {"id_feed":self.id_feeds,"id_new":self.id_news,"link": self.link,"title":self.title,"insert_date":self.insert_date,"is_read":self.is_read,"content":self.content,"author":self.author,"gid":self.gid}

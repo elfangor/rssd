@@ -21,4 +21,11 @@ class Rssd():
         for f in self.db.get_feeds():
             feeds.append(f.get_info())
         return feeds
-            
+    
+    def get_news(self,param):            
+        news=list()
+        if("feed" in param):
+            for n in self.db.get_news(param['feed']):
+                yield n.get_info()
+        else:
+            pass

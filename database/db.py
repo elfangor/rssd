@@ -37,6 +37,16 @@ class Db():
     def get_feeds(self):
         return self.__session.query(feed.Feed).all()
 
+    def get_feed(self,identifiant):
+        f = self.__session.query(feed.Feed).filter(feed.Feed.id_feeds==identifiant).all()
+        if len(f)==1:
+            return f[0]
+        else:
+            return None
+
+    def get_news(self,identifiant):
+        return self.get_feed(identifiant).news
+
     def update_news(self):
         for f in self.get_feeds():
             self.update_news_one_feed(f)
