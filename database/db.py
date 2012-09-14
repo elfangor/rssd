@@ -44,8 +44,14 @@ class Db():
         else:
             return None
 
-    def get_news(self,identifiant):
-        return self.get_feed(identifiant).news
+    def get_news(self,unread,identifiant=None):
+        if identifiant:
+            if unread:
+                return self.__session.query(new.New).filter(new.New.id_feeds==identifiant).filter(new.New.is_read==False)
+            else: 
+                return self.get_feed(identifiant).news
+        else:
+            pass
 
     def update_news(self):
         for f in self.get_feeds():

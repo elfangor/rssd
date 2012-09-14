@@ -15,7 +15,7 @@ class New(Base):
     author = Column(String)
     title = Column(String)
     link = Column(String)
-    is_read = Column(Boolean)
+    is_read = Column(Boolean,)
     content = Column(String)
     insert_date = Column(DateTime)
     id_feeds = Column(Integer, ForeignKey('feeds.id_feeds'))
@@ -57,6 +57,7 @@ class New(Base):
         else:
             self.logger.warning('No link setting to none')
             self.link = None
+        self.is_read=False
 
     def get_info(self,json=True):
         if json:

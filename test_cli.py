@@ -10,12 +10,10 @@ class EchoClient(LineReceiver):
 
     def connectionMade(self):
         self.authen()
-        self.sendLine(json.dumps({"cmd":"get_news","param":{"feed":1}}))
-#        self.sendLine(json.dumps({"cmd":"update"}))
-
-
-#        self.sendLine("hej")
-#        self.sendLine("wa")
+        self.sendLine(json.dumps({"cmd":"add_feed","param":{"feed":"http://feeds.feedburner.com/bashfr-quotes?format=xml"}}))
+        self.sendLine(json.dumps({"cmd":"update"}))
+        self.sendLine(json.dumps({"cmd":"get_news","param":{"feed":1,"unread":True}}))
+#        self.sendLine(json.dumps({"cmd":"get_feeds"}))
 
     def connectionLost(self, reason):
         print "connection lost"
