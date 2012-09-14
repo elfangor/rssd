@@ -20,6 +20,14 @@ class Rssd():
         for f in self.db.get_feeds():
             yield {"cmd":"get_feeds","results":f.get_info()}
     
+    def get_news_id(self,param=None):            
+        if param and "feed" in param:
+            for n in self.db.get_news(param['unread'],param['feed']):
+                yield {"cmd":"get_news","results":n.id_news}
+        else:
+            for n in self.db.get_news():
+                yield {"cmd":"get_news","results":n.id_news}
+
     def get_news(self,param=None):            
         if param and "feed" in param:
             for n in self.db.get_news(param['unread'],param['feed']):
@@ -27,3 +35,7 @@ class Rssd():
         else:
             for n in self.db.get_news():
                 yield {"cmd":"get_news","results":n.get_info()}
+
+    def set_read(self,param):
+        self.db.get_new(param['new']).is_read=True
+        self.db.commit()

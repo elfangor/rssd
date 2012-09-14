@@ -44,6 +44,13 @@ class Db():
         else:
             return None
 
+    def get_new(self,identifiant):
+        f = self.__session.query(new.New).filter(new.New.id_news==identifiant).all()
+        if len(f)==1:
+            return f[0]
+        else:
+            return None
+
     def get_news(self,unread,identifiant=None):
         if identifiant:
             if unread:
